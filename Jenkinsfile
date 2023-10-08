@@ -18,7 +18,7 @@ pipeline {
       steps {
         echo "Pushing image to DockerHub"
         withCredentials([usernamePassword(credentialsId: "dockerHub", usernameVariable: "user", passwordVariable: "pass")]) {
-          sh "docker login -u ${env.user} -p ${env.pass}"
+          sh "docker login -u ${user} -p ${pass}"
         }
       }
     }
