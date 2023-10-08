@@ -28,7 +28,8 @@ pipeline {
     stage("Deploy") {
       steps {
         echo "Deploying the container"
-        sh "docker run -d -p 8000:8000 mohammedatique/note-app-cicd:latest"
+        // sh "docker run -d -p 8000:8000 mohammedatique/note-app-cicd:latest"
+        sh "docker-compose down && docker-compose up -d"
       }
     }
   }
