@@ -4,12 +4,14 @@ pipeline {
   stages {
     stage("Code") {
       steps {
-        echo "cloning the code"
+        echo "Cloning the code"
+        git url: "https://github.com/MohammedAtique/django-notes-app.git", branch: "main"
       }
     }
     stage("Build") {
       steps {
-        echo "building the code"
+        echo "Building the image"
+        sh "docker build . -t note-app-cicd"
       }
     }
     stage("Push to Docker Hub") {
