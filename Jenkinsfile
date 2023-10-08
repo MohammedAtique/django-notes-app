@@ -11,14 +11,14 @@ pipeline {
     stage("Build") {
       steps {
         echo "Building the image"
-        sh "docker build . -t note-app-cicd"
+        sh("docker build . -t note-app-cicd")
       }
     }
     stage("Push to Docker Hub") {
       steps {
         echo "Pushing image to DockerHub"
         withCredentials([usernamePassword(credentialsId: "dockerHub", usernameVariable: "user", passwordVariable: "pass")]) {
-          sh "docker login -u ${user} -p ${pass}"
+          sh("docker login -u ${env.user} -p ${env.pass}")
         }
       }
     }
