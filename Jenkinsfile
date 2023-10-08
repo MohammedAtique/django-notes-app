@@ -16,12 +16,15 @@ pipeline {
     }
     stage("Push to Docker Hub") {
       steps {
-        echo "pushing image to dockerhub"
+        echo "Pushing image to DockerHub"
+        withCredentials([usernamePassword(credentialsId: "dockerHub", usernameVariable: "user", passwordVariable: "pass")]) {
+          sh "docker login -u ${env.user.} -p ${env.pass}"
+        }
       }
     }
     stage("Deploy") {
       steps {
-        echo "deploying the container"
+        echo "Deploying the container"
       }
     }
   }
