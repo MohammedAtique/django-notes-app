@@ -1,6 +1,8 @@
-version : "3.3"
-services :
-  web :
-     image : trainwithshubham/my-note-app:latest
-     ports :
-         - "8000:8000"
+version: '3'
+
+services:
+  web:
+    image: mohammedatique/django-test:latest
+    ports:
+      - 8000:8000
+    pull_policy: always
